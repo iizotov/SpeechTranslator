@@ -18,6 +18,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media;
+using System.Threading;
+using System.Net;
 
 namespace SpeechTranslator
 {
@@ -487,6 +489,12 @@ namespace SpeechTranslator
                                 utterance.Translation = final.Translation;
                                 utterance.Timespan = stopwatch.Elapsed;
                                 Transcript.Add(utterance);
+                                //can be sent for processing
+                                Thread newThread = new Thread(() => ThreadMethod(final.Recognition));
+                                newThread.SetApartmentState(ApartmentState.STA);
+                                newThread.Start();
+
+
                             }
                             if (msg.GetType() == typeof(PartialResultMessage))
                             {
@@ -516,6 +524,16 @@ namespace SpeechTranslator
             };
             await s2smtClient.Connect();
         }
+
+        static void ThreadMethod(string utterance)
+        {
+            if (utterance.Trim() != "")
+            {
+                System.Windows.Forms.Clipboard.SetText(utterance);
+            }
+        }
+
+        
 
         private async Task ADMAuthenticate(SpeechClientOptions options)
         {

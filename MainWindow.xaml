@@ -29,9 +29,9 @@
                 <MenuItem Header="_Logs" HorizontalAlignment="Right">
                     <MenuItem x:Name="MenuItem_SaveLogs"  Header="_Save Logs" Click="SaveLogs_Click" />
                     <MenuItem x:Name="MenuItem_ClearLogs" Header="_Clear Logs" Click="ClearLogs_Click" />
-                    <MenuItem x:Name="LogAutoSave" Header="Auto-save session log" IsCheckable="True" IsChecked="False" />
-                    <MenuItem x:Name="LogSentAudio" Header="Log audio sent" IsCheckable="True"  IsChecked="False" />
-                    <MenuItem x:Name="LogReceivedAudio" Header="Log audio received (TTS)" IsCheckable="True"  IsChecked="False" />
+                    <MenuItem x:Name="LogAutoSave" Header="Auto-save session log" IsCheckable="True" IsChecked="True" />
+                    <MenuItem x:Name="LogSentAudio" Header="Log audio sent" IsCheckable="True"  IsChecked="True" />
+                    <MenuItem x:Name="LogReceivedAudio" Header="Log audio received (TTS)" IsCheckable="True"  IsChecked="True" />
                 </MenuItem>
             </Menu>
         </DockPanel>
